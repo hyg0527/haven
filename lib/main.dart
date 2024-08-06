@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
         width: 390,
         height: 844,
         clipBehavior: Clip.antiAlias,
-        decoration: BoxDecoration(color: Colors.white),
+        decoration: const BoxDecoration(color: Colors.white),
         child: Stack(
           children: [
             Positioned(
@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  shadows: [
+                  shadows: const [
                     BoxShadow(
                       color: Color(0x19000000),
                       blurRadius: 20,
@@ -67,10 +67,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       width: 100,
                       height: 100,
                       clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(color: Colors.white),
+                      decoration: const BoxDecoration(color: Colors.white),
                     ),
                     const SizedBox(height: 10),
-                    Text(
+                    const Text(
                       '얼굴 인식하기',
                       style: TextStyle(
                         color: Colors.black,
@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    Text(
+                    const Text(
                       '카메라를 실행시켜 얼굴을 인식해주세요.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -108,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  shadows: [
+                  shadows: const [
                     BoxShadow(
                       color: Color(0x19000000),
                       blurRadius: 20,
@@ -126,10 +126,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       width: 100,
                       height: 100,
                       clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(color: Colors.white),
+                      decoration: const BoxDecoration(color: Colors.white),
                     ),
                     const SizedBox(height: 10),
-                    Text(
+                    const Text(
                       '결과 기록보기',
                       style: TextStyle(
                         color: Colors.black,
@@ -140,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    SizedBox(
+                    const SizedBox(
                       width: 179,
                       child: Text(
                         '사진을 분석한 결과를\n한번에 볼 수 있어요!',
@@ -176,7 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  shadows: [
+                  shadows: const [
                     BoxShadow(
                       color: Color(0x19000000),
                       blurRadius: 10,
@@ -185,7 +185,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     )
                   ],
                 ),
-                child: Row(
+                child: const Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -196,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Positioned(
               left: 0,
               top: 810,
-              child: Container(
+              child: SizedBox(
                 width: 390,
                 height: 34,
                 child: Row(
@@ -213,7 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         right: 128,
                         bottom: 9,
                       ),
-                      child: Row(
+                      child: const Row(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -224,7 +224,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            Positioned(
+            const Positioned(
               left: 78,
               top: 80,
               child: Text(
@@ -245,8 +245,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 50,
                 height: 50,
                 clipBehavior: Clip.antiAlias,
-                decoration: BoxDecoration(),
-                child: FlutterLogo(),
+                decoration: const BoxDecoration(),
+                child: const FlutterLogo(),
               ),
             ),
           ],
