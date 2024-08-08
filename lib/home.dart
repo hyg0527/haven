@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:haven/camera.dart';
 import 'package:haven/clickbutton.dart';
+import 'package:haven/logcat.dart';
+import 'package:haven/mypage.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -58,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
               left: 318,
               top: 67,
               child: ClickButton(
+                secondScreen: const MyPage(),
                 child: Container(
                   width: 52,
                   height: 52,
@@ -159,6 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
               left: 20,
               top: 388,
               child: ClickButton(
+                secondScreen: const Logcat(),
                 child: Container(
                   width: 350,
                   height: 229,
