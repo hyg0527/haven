@@ -22,6 +22,70 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Stack(
           children: [
             Positioned(
+              // 홈화면 맨 윗 로고
+              left: 20,
+              top: 63,
+              child: Container(
+                width: 50,
+                height: 50,
+                clipBehavior: Clip.antiAlias,
+                decoration: const BoxDecoration(),
+                child: SvgPicture.asset(
+                  'assets/images/haven.svg',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            const Positioned(
+              // 타이틀
+              left: 78,
+              top: 75,
+              child: Text(
+                'Haven',
+                style: TextStyle(
+                  color: Color(0xFF33C284),
+                  fontSize: 28,
+                  fontFamily: 'Aclonica',
+                  fontWeight: FontWeight.w400,
+                  height: 0,
+                ),
+              ),
+            ),
+            Positioned(
+              // 마이페이지 아이콘
+              left: 318,
+              top: 67,
+              child: Container(
+                width: 52,
+                height: 52,
+                padding: const EdgeInsets.only(
+                  top: 13,
+                  left: 14,
+                  right: 13,
+                  bottom: 14,
+                ),
+                clipBehavior: Clip.antiAlias,
+                decoration: ShapeDecoration(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  shadows: const [
+                    BoxShadow(
+                      color: Color(0x19000000),
+                      blurRadius: 10,
+                      offset: Offset(0, 0),
+                      spreadRadius: 1,
+                    )
+                  ],
+                ),
+                child: SvgPicture.asset(
+                  'assets/images/mypage.svg',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Positioned(
               left: 20,
               top: 139,
               child: Container(
@@ -141,6 +205,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
+            const Positioned(
+              left: 24,
+              top: 645,
+              child: Text(
+                '자리 선택',
+                style: TextStyle(
+                  color: Color(0xFF8E8E93),
+                  fontSize: 16,
+                  fontFamily: 'Pretendard',
+                  fontWeight: FontWeight.w600,
+                  height: 0,
+                ),
+              ),
+            ),
             Positioned(
               left: 20,
               top: 680,
@@ -245,41 +323,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Positioned(
-              left: 318,
-              top: 67,
-              child: Container(
-                width: 52,
-                height: 52,
-                padding: const EdgeInsets.only(
-                  top: 13,
-                  left: 14,
-                  right: 13,
-                  bottom: 14,
-                ),
-                clipBehavior: Clip.antiAlias,
-                decoration: ShapeDecoration(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  shadows: const [
-                    BoxShadow(
-                      color: Color(0x19000000),
-                      blurRadius: 10,
-                      offset: Offset(0, 0),
-                      spreadRadius: 1,
-                    )
-                  ],
-                ),
-                child: const Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [],
-                ),
-              ),
-            ),
-            Positioned(
               left: 0,
               top: 810,
               child: SizedBox(
@@ -307,49 +350,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ],
-                ),
-              ),
-            ),
-            const Positioned(
-              left: 78,
-              top: 75,
-              child: Text(
-                'Haven',
-                style: TextStyle(
-                  color: Color(0xFF33C284),
-                  fontSize: 28,
-                  fontFamily: 'Aclonica',
-                  fontWeight: FontWeight.w400,
-                  height: 0,
-                ),
-              ),
-            ),
-            Positioned(
-              // 홈화면 맨 윗 로고
-              left: 20,
-              top: 63,
-              child: Container(
-                width: 50,
-                height: 50,
-                clipBehavior: Clip.antiAlias,
-                decoration: const BoxDecoration(),
-                child: SvgPicture.asset(
-                  'assets/images/haven.svg',
-                  // fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const Positioned(
-              left: 24,
-              top: 645,
-              child: Text(
-                '자리 선택',
-                style: TextStyle(
-                  color: Color(0xFF8E8E93),
-                  fontSize: 16,
-                  fontFamily: 'Pretendard',
-                  fontWeight: FontWeight.w600,
-                  height: 0,
                 ),
               ),
             ),
