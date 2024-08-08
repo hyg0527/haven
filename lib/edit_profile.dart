@@ -102,7 +102,7 @@ class _EditProfileState extends State<EditProfile> {
                 top: 466,
                 child: Container(
                   width: 44,
-                  height: 20,
+                  height: 44,
                   clipBehavior: Clip.antiAlias,
                   decoration: const BoxDecoration(),
                   child: Stack(
@@ -111,8 +111,8 @@ class _EditProfileState extends State<EditProfile> {
                         left: 10,
                         top: 10,
                         child: Container(
-                          width: 20,
-                          height: 20,
+                          width: 22,
+                          height: 22,
                           clipBehavior: Clip.antiAlias,
                           decoration: ShapeDecoration(
                             color: const Color(0xFFE5E5EA),
@@ -120,9 +120,15 @@ class _EditProfileState extends State<EditProfile> {
                               borderRadius: BorderRadius.circular(24),
                             ),
                           ),
-                          child: SvgPicture.asset(
-                          'assets/images/close_button.svg',
-                        ),
+                          child: Center(  // Center 위젯을 사용하여 SVG 크기 조절
+                            child: Container(
+                              width: 10,  // SVG의 너비를 지정
+                              height: 10,  // SVG의 높이를 지정
+                              child: SvgPicture.asset(
+                                'assets/images/close_button.svg',
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -145,18 +151,23 @@ class _EditProfileState extends State<EditProfile> {
               ),
               Positioned(
                 left: 12,
-                top: 59,
+                top: 62,
                 child: Container(
                   padding: const EdgeInsets.all(10),
-                  child: const Row(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        width: 24,
-                        height: 24,
-                        child: FlutterLogo(),
+                      Container(
+                        width: 20,
+                        height: 20,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: const BoxDecoration(),
+                        child: SvgPicture.asset(
+                          'assets/images/close_button.svg',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ],
                   ),
