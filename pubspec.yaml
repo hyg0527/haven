@@ -63,6 +63,10 @@ flutter:
   assets:
     - assets/images/haven.svg
     - assets/images/mypage.svg
+    - assets/images/face.svg
+    - assets/images/logcat.svg
+    - assets/images/ai_logo.svg
+    - assets/images/select.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

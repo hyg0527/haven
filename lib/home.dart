@@ -116,7 +116,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 100,
                       clipBehavior: Clip.antiAlias,
                       decoration: const BoxDecoration(),
-                      child: const FlutterLogo(),
+                      child: SvgPicture.asset(
+                        'assets/images/face.svg',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     const SizedBox(height: 10),
                     const Text(
@@ -176,7 +179,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 100,
                       clipBehavior: Clip.antiAlias,
                       decoration: const BoxDecoration(),
-                      child: const FlutterLogo(),
+                      child: SvgPicture.asset(
+                        'assets/images/logcat.svg',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     const SizedBox(height: 10),
                     const Text(
@@ -250,7 +256,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 40,
                       clipBehavior: Clip.antiAlias,
                       decoration: const BoxDecoration(),
-                      child: const FlutterLogo(),
+                      child: SvgPicture.asset(
+                        'assets/images/ai_logo.svg',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     const SizedBox(height: 10),
                     const Text(
@@ -300,11 +309,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           top: 4, left: 25, right: 25, bottom: 3),
                       clipBehavior: Clip.antiAlias,
                       decoration: const BoxDecoration(),
-                      child: const Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [],
+                      child: SvgPicture.asset(
+                        'assets/images/select.svg',
+                        fit: BoxFit.cover,
                       ),
                     ),
                     const SizedBox(height: 10),
