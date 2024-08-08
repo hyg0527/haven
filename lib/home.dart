@@ -4,6 +4,7 @@ import 'package:haven/camera.dart';
 import 'package:haven/clickbutton.dart';
 import 'package:haven/logcat.dart';
 import 'package:haven/mypage.dart';
+import 'package:haven/seat_list.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -242,6 +243,7 @@ class _MyHomePageState extends State<MyHomePage> {
               left: 20,
               top: 680,
               child: ClickButton(
+                secondScreen: const SeatList(),
                 child: Container(
                   width: 164,
                   height: 110,
@@ -295,6 +297,7 @@ class _MyHomePageState extends State<MyHomePage> {
               left: 206,
               top: 680,
               child: ClickButton(
+                secondScreen: const SeatList(),
                 child: Container(
                   width: 164,
                   height: 110,
