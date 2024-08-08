@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
-import 'mypage.dart';
-import 'edit_profile.dart';
+import 'package:haven/home.dart';
+import 'package:haven/mypage.dart';
+import 'package:haven/edit_profile.dart';
+import 'package:haven/camera.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MyPage(),
+      home: const CameraScreen(),
     );
   }
 }
