@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class ClickButton extends StatefulWidget {
   final Widget child;
+  final Widget? secondScreen;
 
-  const ClickButton({super.key, required this.child});
+  const ClickButton({super.key, required this.child, this.secondScreen});
 
   @override
   State<StatefulWidget> createState() {
@@ -38,6 +39,14 @@ class _ClickButtonState extends State<ClickButton> {
       onTapDown: _onTapDown,
       onTapUp: _onTapUp,
       onTapCancel: _onTapCancel,
+      onTap: () {
+        if (widget.secondScreen != null) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => widget.secondScreen!),
+          );
+        }
+      },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         decoration: ShapeDecoration(

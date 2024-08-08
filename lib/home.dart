@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:haven/camera.dart';
 import 'package:haven/clickbutton.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -92,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
               left: 20,
               top: 139,
               child: ClickButton(
+                secondScreen: const CameraScreen(),
                 child: Container(
                   width: 350,
                   height: 229,
