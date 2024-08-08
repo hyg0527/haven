@@ -79,6 +79,14 @@ flutter:
     - family: Aclonica
       fonts:
         - asset: assets/font/Aclonica-Regular.ttf
+    - family: Pretendard
+      fonts:
+        - asset: assets/font/Pretendard-Bold.otf
+          weight: 700
+        - asset: assets/font/Pretendard-Medium.otf
+          weight: 500
+        - asset: assets/font/Pretendard-Regular.otf
+          weight: 400
         # - asset: fonts/Schyler-Italic.ttf
         #   style: italic
   #   - family: Trajan Pro
