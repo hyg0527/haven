@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:haven/edit_profile.dart';
 
 class MyPage extends StatefulWidget {
   const MyPage ({Key? key});
@@ -23,7 +24,7 @@ class _MyPageState extends State<MyPage> {
             children: [
               Positioned(
                 left: 7,
-                top: 51,
+                top: 62,
                 child: Container(
                   padding: const EdgeInsets.all(10),
                   child: Row(
@@ -32,8 +33,8 @@ class _MyPageState extends State<MyPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        width: 40,
-                        height: 40,
+                        width: 20,
+                        height: 20,
                         clipBehavior: Clip.antiAlias,
                         decoration: const BoxDecoration(),
                         child: SvgPicture.asset(
@@ -174,31 +175,37 @@ class _MyPageState extends State<MyPage> {
               Positioned(
                 left: 318,
                 top: 111,
-                child: Container(
-                  height: 36,
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFFE5E5EA),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(36),
-                    ),
-                  ),
-                  child: const Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        '수정',
-                        style: TextStyle(
-                          color: Color(0xFF8E8E93),
-                          fontSize: 16,
-                          fontFamily: 'Pretendard',
-                          fontWeight: FontWeight.w400,
-                          height: 0,
-                        ),
+                child: GestureDetector (
+                  onTap: () {
+                    Navigator.push ( context, MaterialPageRoute(builder: (c) => const EditProfile()),
+                    );
+                  },
+                  child: Container(
+                    height: 36,
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFFE5E5EA),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(36),
                       ),
-                    ],
+                    ),
+                    child: const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          '수정',
+                          style: TextStyle(
+                            color: Color(0xFF8E8E93),
+                            fontSize: 16,
+                            fontFamily: 'Pretendard',
+                            fontWeight: FontWeight.w400,
+                            height: 0,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

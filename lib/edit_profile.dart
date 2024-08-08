@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:haven/clickbutton.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile ({Key? key});
@@ -55,31 +56,33 @@ class _EditProfileState extends State<EditProfile> {
               Positioned(
                 left: 145,
                 top: 364,
-                child: Container(
-                  height: 44,
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFFE5E5EA),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                  ),
-                  child: const Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        '사진 올리기',
-                        style: TextStyle(
-                          color: Color(0xFF8E8E93),
-                          fontSize: 16,
-                          fontFamily: 'Pretendard',
-                          fontWeight: FontWeight.w500,
-                          height: 0,
-                        ),
+                child: ClickButton (
+                  child: Container(
+                    height: 44,
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFFE5E5EA),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40),
                       ),
-                    ],
+                    ),
+                    child: const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          '사진 올리기',
+                          style: TextStyle(
+                            color: Color(0xFF8E8E93),
+                            fontSize: 16,
+                            fontFamily: 'Pretendard',
+                            fontWeight: FontWeight.w500,
+                            height: 0,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -121,7 +124,7 @@ class _EditProfileState extends State<EditProfile> {
                             ),
                           ),
                           child: Center(  // Center 위젯을 사용하여 SVG 크기 조절
-                            child: Container(
+                            child: SizedBox(
                               width: 10,  // SVG의 너비를 지정
                               height: 10,  // SVG의 높이를 지정
                               child: SvgPicture.asset(
@@ -152,24 +155,29 @@ class _EditProfileState extends State<EditProfile> {
               Positioned(
                 left: 12,
                 top: 62,
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: 20,
-                        height: 20,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: const BoxDecoration(),
-                        child: SvgPicture.asset(
-                          'assets/images/close_button.svg',
-                          fit: BoxFit.cover,
+                child: GestureDetector (
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 20,
+                          height: 20,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: const BoxDecoration(),
+                          child: SvgPicture.asset(
+                            'assets/images/close_button.svg',
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -190,31 +198,33 @@ class _EditProfileState extends State<EditProfile> {
               Positioned(
                 left: 20,
                 top: 700,
-                child: Container(
-                  width: 352,
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFF33C284),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(56),
-                    ),
-                  ),
-                  child: const Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        '수정하기',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontFamily: 'Pretendard',
-                          fontWeight: FontWeight.w600,
-                          height: 0,
-                        ),
+                child: ClickButton (
+                  child: Container(
+                    width: 352,
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFF33C284),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(56),
                       ),
-                    ],
+                    ),
+                    child: const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          '수정하기',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontFamily: 'Pretendard',
+                            fontWeight: FontWeight.w600,
+                            height: 0,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
