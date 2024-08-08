@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(const MyApp());
@@ -341,6 +342,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Positioned(
+              // 홈화면 맨 윗 로고
               left: 20,
               top: 63,
               child: Container(
@@ -348,7 +350,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 50,
                 clipBehavior: Clip.antiAlias,
                 decoration: const BoxDecoration(),
-                child: const FlutterLogo(),
+                child: SvgPicture.asset(
+                  'assets/images/haven.svg',
+                  // fit: BoxFit.cover,
+                ),
               ),
             ),
             const Positioned(
