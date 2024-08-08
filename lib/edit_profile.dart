@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile ({Key? key});
@@ -10,114 +11,19 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
+    return Scaffold(
+      body:
         Container(
           width: 390,
           height: 844,
           clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(color: Colors.white),
+          decoration: const BoxDecoration(color: Colors.white),
           child: Stack(
             children: [
-              Positioned(
-                left: 0,
-                top: 0,
-                child: Container(
-                  width: 390,
-                  height: 47,
-                  padding: const EdgeInsets.only(
-                    top: 17,
-                    left: 23,
-                    right: 18,
-                    bottom: 14,
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              '   9:41',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w700,
-                                height: 0.07,
-                                letterSpacing: -0.50,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 39,
-                              height: 12.50,
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    left: 0,
-                                    top: 0.25,
-                                    child: Container(
-                                      width: 17,
-                                      height: 12,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image: NetworkImage("https://via.placeholder.com/17x12"),
-                                          fit: BoxFit.fill,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 22,
-                                    top: 0,
-                                    child: Container(
-                                      width: 17,
-                                      height: 12.50,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image: NetworkImage("https://via.placeholder.com/17x12"),
-                                          fit: BoxFit.fill,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(width: 5),
-                            Container(
-                              width: 25,
-                              height: 12,
-                              child: FlutterLogo(),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
+              const Positioned(
                 left: 0,
                 top: 810,
-                child: Container(
+                child: SizedBox(
                   width: 390,
                   height: 34,
                   child: Stack(
@@ -125,21 +31,21 @@ class _EditProfileState extends State<EditProfile> {
                       Positioned(
                         left: 0,
                         top: 0,
-                        child: Container(width: 390, height: 34, child: Stack()),
+                        child: SizedBox(width: 390, height: 34, child: Stack()),
                       ),
                     ],
                   ),
                 ),
               ),
               Positioned(
-                left: 108,
-                top: 187,
+                left: 103,
+                top: 157,
                 child: Container(
                   width: 179,
                   height: 179,
                   clipBehavior: Clip.antiAlias,
                   decoration: ShapeDecoration(
-                    color: Color(0xFFE5E5EA),
+                    color: const Color(0xFFE5E5EA),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(72),
                     ),
@@ -147,18 +53,18 @@ class _EditProfileState extends State<EditProfile> {
                 ),
               ),
               Positioned(
-                left: 148,
-                top: 394,
+                left: 145,
+                top: 364,
                 child: Container(
                   height: 44,
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   decoration: ShapeDecoration(
-                    color: Color(0xFFE5E5EA),
+                    color: const Color(0xFFE5E5EA),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(40),
                     ),
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -177,7 +83,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ),
               ),
-              Positioned(
+              const Positioned(
                 left: 24,
                 top: 476,
                 child: Text(
@@ -196,32 +102,34 @@ class _EditProfileState extends State<EditProfile> {
                 top: 466,
                 child: Container(
                   width: 44,
-                  height: 44,
+                  height: 20,
                   clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Stack(
                     children: [
                       Positioned(
                         left: 10,
                         top: 10,
                         child: Container(
-                          width: 24,
-                          height: 24,
+                          width: 20,
+                          height: 20,
                           clipBehavior: Clip.antiAlias,
                           decoration: ShapeDecoration(
-                            color: Color(0xFFE5E5EA),
+                            color: const Color(0xFFE5E5EA),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(24),
                             ),
                           ),
-                          child: FlutterLogo(),
+                          child: SvgPicture.asset(
+                          'assets/images/close_button.svg',
+                        ),
                         ),
                       ),
                     ],
                   ),
                 ),
               ),
-              Positioned(
+              const Positioned(
                 left: 24,
                 top: 526,
                 child: Text(
@@ -240,12 +148,12 @@ class _EditProfileState extends State<EditProfile> {
                 top: 59,
                 child: Container(
                   padding: const EdgeInsets.all(10),
-                  child: Row(
+                  child: const Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
+                      SizedBox(
                         width: 24,
                         height: 24,
                         child: FlutterLogo(),
@@ -254,7 +162,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ),
               ),
-              Positioned(
+              const Positioned(
                 left: 68,
                 top: 67,
                 child: Text(
@@ -270,17 +178,17 @@ class _EditProfileState extends State<EditProfile> {
               ),
               Positioned(
                 left: 20,
-                top: 740,
+                top: 700,
                 child: Container(
                   width: 352,
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                   decoration: ShapeDecoration(
-                    color: Color(0xFF33C284),
+                    color: const Color(0xFF33C284),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(56),
                     ),
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -302,7 +210,6 @@ class _EditProfileState extends State<EditProfile> {
             ],
           ),
         ),
-      ],
     );
   }
 

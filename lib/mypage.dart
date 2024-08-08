@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class MyPage extends StatefulWidget {
   const MyPage ({Key? key});
@@ -21,19 +22,24 @@ class _MyPageState extends State<MyPage> {
           child: Stack(
             children: [
               Positioned(
-                left: 12,
-                top: 59,
+                left: 7,
+                top: 51,
                 child: Container(
                   padding: const EdgeInsets.all(10),
-                  child: const Row(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        width: 24,
-                        height: 24,
-                        child: FlutterLogo(),
+                      Container(
+                        width: 40,
+                        height: 40,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: const BoxDecoration(),
+                        child: SvgPicture.asset(
+                          'assets/images/back_button.svg',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ],
                   ),
@@ -112,7 +118,7 @@ class _MyPageState extends State<MyPage> {
                     children: [
                       Positioned(
                         left: 24,
-                        top: 24,
+                        top: 0,
                         child: Text(
                           '로그아웃',
                           style: TextStyle(
@@ -124,6 +130,29 @@ class _MyPageState extends State<MyPage> {
                           ),
                         ),
                       ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 15,
+                top: 700,
+                child: Container(
+                  width: 360,
+                  height: 0.5,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFFE5E5EA),
+                  ),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 24,
+                        child: SvgPicture.asset(
+                          'assets/images/divider.svg',
+                          fit: BoxFit.cover,
+                        ),
+                        ),
                     ],
                   ),
                 ),
