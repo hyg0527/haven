@@ -37,24 +37,29 @@ class _SeatListState extends State<SeatList> {
                       Positioned(
                         left: 12,
                         top: 62,
-                        child: Container(
-                          padding: const EdgeInsets.all(10),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 20,
-                                height: 20,
-                                clipBehavior: Clip.antiAlias,
-                                decoration: const BoxDecoration(),
-                                child: SvgPicture.asset(
-                                  'assets/images/back_button.svg',
-                                  fit: BoxFit.cover,
+                        child: GestureDetector (
+                          onTap: () {
+                            Navigator.pop(context);
+                            },
+                          child: Container(
+                            padding: const EdgeInsets.all(10),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 20,
+                                  height: 20,
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: const BoxDecoration(),
+                                  child: SvgPicture.asset(
+                                    'assets/images/back_button.svg',
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
