@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 class ClickButton extends StatefulWidget {
   final Widget child;
   final Widget? secondScreen;
+  final bool? isCircle;
 
-  const ClickButton({super.key, required this.child, this.secondScreen});
+  const ClickButton(
+      {super.key, required this.child, this.secondScreen, this.isCircle});
 
   @override
   State<StatefulWidget> createState() {
@@ -52,7 +54,9 @@ class _ClickButtonState extends State<ClickButton> {
         decoration: ShapeDecoration(
             color: Colors.white,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: (widget.isCircle ?? false)
+                  ? BorderRadius.circular(80)
+                  : BorderRadius.circular(20),
             ),
             shadows: _isPressed
                 ? [

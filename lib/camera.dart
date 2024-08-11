@@ -64,7 +64,8 @@ class _CameraScreenState extends State<CameraScreen> {
           ),
           backgroundColor: Colors.white),
       body: Container(
-        decoration: const BoxDecoration(color: Colors.white),
+        decoration:
+            const BoxDecoration(color: Color.fromARGB(255, 197, 197, 197)),
         child: Column(
           children: [
             Expanded(
@@ -92,6 +93,7 @@ class _CameraScreenState extends State<CameraScreen> {
               decoration: const BoxDecoration(color: Colors.white),
               child: Center(
                 child: ClickButton(
+                  isCircle: true,
                   child: ClipOval(
                     child: Container(
                       width: 100,
