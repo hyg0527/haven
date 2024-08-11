@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:haven/home.dart';
-import 'package:haven/logcat.dart';
-import 'package:haven/mypage.dart';
-import 'package:haven/edit_profile.dart';
-import 'package:haven/camera.dart';
-import 'package:haven/seat_list.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
