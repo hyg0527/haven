@@ -55,7 +55,11 @@ class _CameraScreenState extends State<CameraScreen> {
           title: const Text(
             '얼굴 인식',
             style: TextStyle(
-              fontWeight: FontWeight.bold,
+              color: Colors.black,
+              fontSize: 24,
+              fontFamily: 'Pretendard',
+              fontWeight: FontWeight.w700,
+              height: 0,
             ),
           ),
           backgroundColor: Colors.white),

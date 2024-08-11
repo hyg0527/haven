@@ -20,16 +20,16 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(90),
+        preferredSize: const Size.fromHeight(75),
         child: AppBar(
           backgroundColor: Colors.white,
-          elevation: 1,
+          elevation: 0,
           flexibleSpace: Stack(
             children: [
               Positioned(
                 // 홈화면 맨 윗 로고
                 left: 20,
-                bottom: 22,
+                bottom: 8,
                 child: Container(
                   width: 50,
                   height: 50,
@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
               const Positioned(
                 // 타이틀
                 left: 78,
-                bottom: 29,
+                bottom: 15,
                 child: Text(
                   'Haven',
                   style: TextStyle(
@@ -58,9 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Positioned(
                 // 마이페이지 아이콘
-                // left: 318,
                 right: 24,
-                bottom: 18,
+                bottom: 4,
                 child: ClickButton(
                   secondScreen: const MyPage(),
                   child: Container(
@@ -105,6 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
         decoration: const BoxDecoration(color: Colors.white),
         child: Column(
           children: [
+            const SizedBox(height: 18),
             ClickButton(
               secondScreen: const CameraScreen(),
               child: Container(
