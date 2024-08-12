@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:haven/home.dart';
-import 'package:haven/logcat.dart';
-import 'package:haven/mypage.dart';
-import 'package:haven/edit_profile.dart';
-import 'package:haven/camera.dart';
-import 'package:haven/seat_list.dart';
+import 'package:haven/splash.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -18,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MyHomePage(),
+      home: const SplashScreen(), 
     );
   }
 }
