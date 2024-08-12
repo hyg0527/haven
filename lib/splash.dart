@@ -20,10 +20,10 @@ class _SplashScreenState extends State<SplashScreen> {
     Navigator.pushReplacement(
       context, MaterialPageRoute(builder: (context) => LoginScreen()));
   }
-  
+
   Widget build(BuildContext context) {
-    return Column(
-      children: [
+    return Scaffold(
+      body: 
         Container(
           width: 390,
           height: 844,
@@ -61,7 +61,6 @@ class _SplashScreenState extends State<SplashScreen> {
             ],
           ),
         ),
-      ],
     );
   }
 }

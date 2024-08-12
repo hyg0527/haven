@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:haven/create_account.dart';
+
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -333,33 +335,27 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 3),
-                      Container(
-                        padding: const EdgeInsets.only(
-                          top: 13,
-                          left: 19,
-                          right: 20,
-                          bottom: 11,
-                        ),
-                        clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              '회원가입',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFF8E8E93),
-                                fontSize: 14,
-                                fontFamily: 'Pretendard',
-                                fontWeight: FontWeight.w500,
-                                decoration: TextDecoration.underline,
-                                height: 0.10,
-                              ),
+                      GestureDetector(  // 터치 가능한 위젯으로 변경
+                        onTap: () {
+                          // 회원가입 화면으로 이동
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CreateAccountScreen(),
                             ),
-                          ],
+                          );
+                        },
+                        child: Text(
+                          "회원가입",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color(0xFF33C284),
+                            fontSize: 14,
+                            fontFamily: "Pretendard",
+                            fontWeight: FontWeight.w500,
+                            decoration: TextDecoration.underline,
+                            height: 0.10,
+                          ),
                         ),
                       ),
                     ],
@@ -373,31 +369,31 @@ class LoginScreen extends StatelessWidget {
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: '환영합니다!\n',
+                        text: "환영합니다!\n",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 24,
-                          fontFamily: 'Pretendard',
+                          fontFamily: "Pretendard",
                           fontWeight: FontWeight.w700,
                           height: 0.06,
                         ),
                       ),
                       TextSpan(
-                        text: '로그인',
+                        text: "로그인",
                         style: TextStyle(
                           color: Color(0xFF33C284),
                           fontSize: 24,
-                          fontFamily: 'Pretendard',
+                          fontFamily: "Pretendard",
                           fontWeight: FontWeight.w700,
                           height: 0.06,
                         ),
                       ),
                       TextSpan(
-                        text: '을 해주세요.',
+                        text: "을 해주세요.",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 24,
-                          fontFamily: 'Pretendard',
+                          fontFamily: "Pretendard",
                           fontWeight: FontWeight.w700,
                           height: 0.06,
                         ),
