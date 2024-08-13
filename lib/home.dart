@@ -5,6 +5,7 @@ import 'package:haven/clickbutton.dart';
 import 'package:haven/logcat.dart';
 import 'package:haven/mypage.dart';
 import 'package:haven/seat_list.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -235,19 +236,45 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(
               height: 25,
             ),
-            Container(
-              alignment: Alignment.centerLeft,
-              margin: const EdgeInsets.fromLTRB(24, 0, 0, 0),
-              child: const Text(
-                '자리 선택',
-                style: TextStyle(
-                  color: Color(0xFF8E8E93),
-                  fontSize: 16,
-                  fontFamily: 'Pretendard',
-                  fontWeight: FontWeight.w600,
-                  height: 0,
+            Row(
+              children: [
+                Container(
+                  alignment: Alignment.centerLeft,
+                  margin: const EdgeInsets.fromLTRB(24, 0, 0, 0),
+                  child: const Text(
+                    '자리 선택',
+                    style: TextStyle(
+                      color: Color(0xFF8E8E93),
+                      fontSize: 16,
+                      fontFamily: 'Pretendard',
+                      fontWeight: FontWeight.w600,
+                      height: 0,
+                    ),
+                  ),
                 ),
-              ),
+                GestureDetector(
+                  onTap: () {
+                    Fluttertoast.showToast(
+                      msg: ' 얼굴 인식을 완료하신 후 자리를 선택할 수 있어요. ',
+                      toastLength: Toast.LENGTH_SHORT,
+                      timeInSecForIosWeb: 3,
+                      backgroundColor: Colors.grey,
+                      fontSize: 15,
+                      gravity: ToastGravity.BOTTOM,
+                    );
+                  },
+                  child: Container(
+                    width: 40,
+                    height: 20,
+                    clipBehavior: Clip.antiAlias,
+                    decoration: const BoxDecoration(),
+                    child: SvgPicture.asset(
+                      'assets/images/question.svg',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(
               height: 15,
