@@ -4,9 +4,14 @@ class ClickButton extends StatefulWidget {
   final Widget child;
   final Widget? secondScreen;
   final bool? isCircle;
+  final bool? isActivated;
 
   const ClickButton(
-      {super.key, required this.child, this.secondScreen, this.isCircle});
+      {super.key,
+      required this.child,
+      this.secondScreen,
+      this.isCircle,
+      this.isActivated});
 
   @override
   State<StatefulWidget> createState() {
@@ -42,7 +47,7 @@ class _ClickButtonState extends State<ClickButton> {
       onTapUp: _onTapUp,
       onTapCancel: _onTapCancel,
       onTap: () {
-        if (widget.secondScreen != null) {
+        if (widget.secondScreen != null && (widget.isActivated ?? true)) {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => widget.secondScreen!),
@@ -58,7 +63,7 @@ class _ClickButtonState extends State<ClickButton> {
                   ? BorderRadius.circular(80)
                   : BorderRadius.circular(20),
             ),
-            shadows: _isPressed
+            shadows: _isPressed && (widget.isActivated ?? true)
                 ? [
                     const BoxShadow(
                       color: Color(0x33000000),
@@ -75,7 +80,10 @@ class _ClickButtonState extends State<ClickButton> {
                       spreadRadius: 0,
                     )
                   ]),
-        child: widget.child,
+        child: Opacity(
+          opacity: (widget.isActivated ?? true) ? 1.0 : 0.2,
+          child: widget.child,
+        ),
       ),
     );
   }

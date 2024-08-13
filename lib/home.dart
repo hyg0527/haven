@@ -257,6 +257,7 @@ class _MyHomePageState extends State<MyHomePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ClickButton(
+                  isActivated: false,
                   secondScreen: const SeatList(),
                   child: Container(
                     width: 164,
