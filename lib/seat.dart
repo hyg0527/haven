@@ -19,7 +19,7 @@ class SeatGrid extends StatelessWidget {
         return Column(
           children: [
             SizedBox(
-              width: double.infinity,
+              width: MediaQuery.of(context).size.width * 0.75, // 화면 크기에 맞게 조정
               height: 44,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,

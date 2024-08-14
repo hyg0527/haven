@@ -23,78 +23,133 @@ class _SeatListState extends State<SeatList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+        title: const Text(
+          '자리 선택',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 24,
+            fontFamily: 'Pretendard',
+            fontWeight: FontWeight.w700,
+            height: 0,
+          ),
+        ),
+        backgroundColor: Colors.white,
+      ),
       body: Container(
-        width: 390,
-        height: 844,
+        width: double.infinity,
+        height: double.infinity,
         clipBehavior: Clip.antiAlias,
         decoration: const BoxDecoration(color: Colors.white),
-        child: Stack(
+        child: Column(
           children: [
-            Positioned(
-              left: 0,
-              top: 0,
-              child: Container(
-                width: 390,
-                height: 117,
-                clipBehavior: Clip.antiAlias,
-                decoration: const BoxDecoration(color: Colors.white),
-                child: Stack(
-                  children: [
-                    Positioned(
-                      left: 12,
-                      top: 62,
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(10),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 20,
-                                height: 20,
-                                clipBehavior: Clip.antiAlias,
-                                decoration: const BoxDecoration(),
-                                child: SvgPicture.asset(
-                                  'assets/images/back_button.svg',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ],
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(width: 55),
+                Container(
+                    width: 94,
+                    padding: const EdgeInsets.all(10),
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFFF2F2F7),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          '출입구',
+                          style: TextStyle(
+                            color: Color(0xFF8E8E93),
+                            fontSize: 14,
+                            fontFamily: 'Pretendard',
+                            fontWeight: FontWeight.w500,
+                            height: 0,
                           ),
                         ),
-                      ),
+                      ],
                     ),
-
-                    // 타이틀
-                    const Positioned(
-                      left: 68,
-                      top: 67,
-                      child: Text(
-                        '자리 선택',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 24,
-                          fontFamily: 'Pretendard',
-                          fontWeight: FontWeight.w700,
-                          height: 0,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                  ),
+              ],
             ),
 
-            // 자리 선택 Container
-            Positioned(
-              left: 20,
-              top: 700,
-              child: ClickButton(
+            const SizedBox(height: 20),
+
+            Column(
+              
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+              children:[
+                SeatGrid(
+                  selectedSeat: selectedSeat,
+                  onSeatSelected: selectSeat,
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 30),
+
+            Container(
+                  width: MediaQuery.of(context).size.width * 0.85, // 화면 크기에 맞게 조정
+                  height: 1.0, // 높이를 적절히 수정
+                  color: const Color.fromARGB(255, 202, 202, 204),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: SvgPicture.asset(
+                      'assets/images/divider.svg',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+
+              const SizedBox(height: 30),
+
+              // 선택한 자리
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(width: 55),
+                Text(
+                    '선택한 자리',
+                    style: TextStyle(
+                      color: Color(0xFF8E8E93),
+                      fontSize: 16,
+                      fontFamily: 'Pretendard',
+                      fontWeight: FontWeight.w600,
+                      height: 0,
+                    ),
+                  ),
+              ],
+            ),
+
+            const SizedBox(height: 10),
+
+            // 지정된 자리 표시
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(width: 55),
+                Text(
+                    selectedSeat != null ? '${selectedSeat!.toString().padLeft(2, '0')}번' : '선택 없음',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 24,
+                      fontFamily: 'Pretendard',
+                      fontWeight: FontWeight.w600,
+                      height: 0,
+                    ),
+                  ),
+              ],
+            ),
+
+            const SizedBox(height: 25),
+
+            ClickButton(
                 child: Container(
                   width: 352,
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
@@ -123,80 +178,8 @@ class _SeatListState extends State<SeatList> {
                   ),
                 ),
               ),
-            ),
 
-            // 선택한 자리
-            const Positioned(
-              left: 24,
-              top: 612,
-              child: Text(
-                '선택한 자리',
-                style: TextStyle(
-                  color: Color(0xFF8E8E93),
-                  fontSize: 16,
-                  fontFamily: 'Pretendard',
-                  fontWeight: FontWeight.w600,
-                  height: 0,
-                ),
-              ),
-            ),
 
-            // 지정된 자리 표시
-            Positioned(
-              left: 24,
-              top: 640,
-              child: Text(
-                selectedSeat != null ? '${selectedSeat!.toString().padLeft(2, '0')}번' : '선택 없음',
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 24,
-                  fontFamily: 'Pretendard',
-                  fontWeight: FontWeight.w600,
-                  height: 0,
-                ),
-              ),
-            ),
-
-            // 출입구는 계산에서 제외
-            Positioned(
-              left: 28,
-              top: 125,
-              child: Container(
-                width: 92,
-                padding: const EdgeInsets.all(10),
-                decoration: ShapeDecoration(
-                  color: const Color(0xFFF2F2F7),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                child: const Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      '출입구',
-                      style: TextStyle(
-                        color: Color(0xFF8E8E93),
-                        fontSize: 14,
-                        fontFamily: 'Pretendard',
-                        fontWeight: FontWeight.w500,
-                        height: 0,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.fromLTRB(28, 175, 0, 0),
-              child: SeatGrid(
-                selectedSeat: selectedSeat,
-                onSeatSelected: selectSeat,
-              ),
-            ),
           ],
         ),
       ),
