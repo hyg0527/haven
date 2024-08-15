@@ -3,17 +3,20 @@ import 'package:flutter/material.dart';
 class SeatGrid extends StatelessWidget {
   final int? selectedSeat;
   final Function(int) onSeatSelected;
+  final Set<int> disabledSeats;
 
   const SeatGrid({
     super.key,
     required this.selectedSeat,
     required this.onSeatSelected,
+    required this.disabledSeats,
   });
 
   @override
   Widget build(BuildContext context) {
     // 화면 크기에 맞춰 좌석의 너비와 높이 설정 (동적으로)
-    double seatWidth = MediaQuery.of(context).size.width * 0.75 / 7 - 4;
+    double gridWidth = MediaQuery.of(context).size.width * 0.75;
+    double seatWidth = gridWidth / 7 - 4;
     double seatHeight = seatWidth;
 
     return Column(
@@ -23,7 +26,7 @@ class SeatGrid extends StatelessWidget {
         return Column(
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.75,
+              width: gridWidth,
               height: seatHeight,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -33,26 +36,35 @@ class SeatGrid extends StatelessWidget {
                   String text = seatNumber.toString().padLeft(2, '0');
 
                   bool isSelected = selectedSeat == seatNumber;
+                  bool isDisabled = disabledSeats.contains(seatNumber);
 
                   return Row(
                     children: [
                       GestureDetector(
-                        onTap: () => onSeatSelected(seatNumber),
+                        onTap: !isDisabled
+                            ? () => onSeatSelected(seatNumber)
+                            : null, // 비활성화된 좌석은 선택 불가
                         child: Container(
                           width: seatWidth,
                           height: seatHeight,
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            color: isSelected
-                                ? const Color(0xFF33C284)
-                                : const Color(0xFFF2F2F7),
+                            color: isDisabled
+                                ? Colors.grey[600] // 비활성화된 좌석 색상
+                                : isSelected
+                                    ? const Color(0xFF33C284)
+                                    : const Color(0xFFF2F2F7),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Center(
                             child: Text(
                               text,
                               style: TextStyle(
-                                color: isSelected ? Colors.white : const Color(0xFF8E8E93),
+                                color: isDisabled
+                                    ? const Color(0xFF8E8E93) // 비활성화된 좌석 텍스트 색상
+                                    : isSelected
+                                        ? Colors.white
+                                        : const Color(0xFF8E8E93),
                                 fontSize: 14,
                                 fontFamily: 'Pretendard',
                                 fontWeight: FontWeight.w500,

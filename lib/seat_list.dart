@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:haven/clickbutton.dart';
 import 'package:haven/seat.dart';
 
 class SeatList extends StatefulWidget {
@@ -12,17 +11,29 @@ class SeatList extends StatefulWidget {
 
 class _SeatListState extends State<SeatList> {
   int? selectedSeat; // 선택된 자리 번호를 저장
+  Set<int> disabledSeats = {}; // 비활성화된 좌석 번호를 저장하는 Set
 
-// 좌석 변경 시 selectedSeat에 번호 새로 저장
+  // 좌석 선택 시 선택된 자리 번호를 저장
   void selectSeat(int seatNumber) {
     setState(() {
       selectedSeat = seatNumber;
     });
   }
 
+  // '자리 선택하기' 버튼 클릭 시 실행
+  void confirmSeatSelection() {
+    if (selectedSeat != null) {
+      setState(() {
+        disabledSeats.add(selectedSeat!); // 선택된 좌석을 비활성화 목록에 추가
+        selectedSeat = null; // 선택 초기화
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    double seatGridWidth = MediaQuery.of(context).size.width * 0.75;;
+    double seatGridWidth = MediaQuery.of(context).size.width * 0.75;
+    // 출입구 칸의 왼쪽 여백을 좌석 너비로 맞춤
     double entryLeftPadding = (MediaQuery.of(context).size.width - seatGridWidth) / 2;
 
     return Scaffold(
@@ -84,10 +95,11 @@ class _SeatListState extends State<SeatList> {
             SeatGrid(
               selectedSeat: selectedSeat,
               onSeatSelected: selectSeat,
+              disabledSeats: disabledSeats, // 비활성화된 좌석 전달
             ),
             const SizedBox(height: 30),
             Container(
-              width: MediaQuery.of(context).size.width * 0.85,
+              width: seatGridWidth,
               height: 1.0,
               color: const Color.fromARGB(255, 202, 202, 204),
               child: Align(
@@ -135,7 +147,8 @@ class _SeatListState extends State<SeatList> {
               ],
             ),
             const SizedBox(height: 25),
-            ClickButton(
+            GestureDetector(
+              onTap: confirmSeatSelection, // 버튼 클릭 시 좌석 선택 확정
               child: Container(
                 width: 352,
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
