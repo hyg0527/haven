@@ -12,6 +12,10 @@ class SeatGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 화면 크기에 맞춰 좌석의 너비와 높이 설정 (동적으로)
+    double seatWidth = MediaQuery.of(context).size.width * 0.75 / 7 - 4;
+    double seatHeight = seatWidth;
+
     return Column(
       children: List.generate(6, (index) {
         bool isSpacingRequired = index % 2 == 0;
@@ -19,8 +23,8 @@ class SeatGrid extends StatelessWidget {
         return Column(
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.75, // 화면 크기에 맞게 조정
-              height: 44,
+              width: MediaQuery.of(context).size.width * 0.75,
+              height: seatHeight,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: 7,
@@ -35,8 +39,8 @@ class SeatGrid extends StatelessWidget {
                       GestureDetector(
                         onTap: () => onSeatSelected(seatNumber),
                         child: Container(
-                          width: 44,
-                          height: 44,
+                          width: seatWidth,
+                          height: seatHeight,
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             color: isSelected
