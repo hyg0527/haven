@@ -1,471 +1,248 @@
 import 'package:flutter/material.dart';
+import 'package:haven/check_account.dart';
 
-class CreateAccountScreen extends StatelessWidget {
+class CreateAccountScreen extends StatefulWidget {
+  const CreateAccountScreen({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _CreateAccountScreen();
+
+}
+
+class _CreateAccountScreen extends State<CreateAccountScreen> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 390,
-          height: 844,
-          clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(color: Colors.white),
-          child: Stack(
+    final screenWidth = MediaQuery.of(context).size.width;
+    
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Positioned(
-                left: 0,
-                top: 0,
-                child: Container(
-                  width: 390,
-                  height: 47,
-                  padding: const EdgeInsets.only(
-                    top: 17,
-                    left: 23,
-                    right: 18,
-                    bottom: 14,
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              '   9:41',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w700,
-                                height: 0.07,
-                                letterSpacing: -0.50,
-                              ),
-                            ),
-                          ],
-                        ),
+              const SizedBox(height: 127),
+              const Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "회원님만의\n",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontFamily: "Pretendard",
+                        fontWeight: FontWeight.w700,
                       ),
-                      Container(
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 39,
-                              height: 12.50,
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    left: 0,
-                                    top: 0.25,
-                                    child: Container(
-                                      width: 17,
-                                      height: 12,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image: NetworkImage("https://via.placeholder.com/17x12"),
-                                          fit: BoxFit.fill,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 22,
-                                    top: 0,
-                                    child: Container(
-                                      width: 17,
-                                      height: 12.50,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image: NetworkImage("https://via.placeholder.com/17x12"),
-                                          fit: BoxFit.fill,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(width: 5),
-                            Container(
-                              width: 25,
-                              height: 12,
-                              child: FlutterLogo(),
-                            ),
-                          ],
-                        ),
+                    ),
+                    TextSpan(
+                      text: "계정",
+                      style: TextStyle(
+                        color: Color(0xFF33C284),
+                        fontSize: 24,
+                        fontFamily: "Pretendard",
+                        fontWeight: FontWeight.w700,
                       ),
-                    ],
-                  ),
+                    ),
+                    TextSpan(
+                      text: "을 만들어주세요.",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontFamily: "Pretendard",
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              Positioned(
-                left: 0,
-                top: 810,
-                child: Container(
-                  width: 390,
-                  height: 34,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: 390,
-                        height: 34,
-                        padding: const EdgeInsets.only(
-                          top: 20,
-                          left: 128,
-                          right: 128,
-                          bottom: 9,
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                        
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+              const SizedBox(height: 20),
+              const Text(
+                '아이디',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontFamily: 'Pretendard',
+                  fontWeight: FontWeight.w700,
                 ),
               ),
-              Positioned(
-                left: 20,
-                top: 392,
-                child: Container(
-                  width: 352,
-                  height: 52,
-                  padding: const EdgeInsets.only(
-                    top: 16,
-                    left: 20,
-                    right: 8,
-                    bottom: 16,
+              const SizedBox(height: 10),
+              Container(
+                width: screenWidth * 0.9,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                decoration: ShapeDecoration(
+                  color: const Color(0xFFF2F2F7),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFF2F2F7),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                ),
+                child: const Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      '이메일을 입력해주세요',
+                      style: TextStyle(
+                        color: Color(0xFF8E8E93),
+                        fontSize: 16,
+                        fontFamily: 'Pretendard',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    FlutterLogo(),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                '비밀번호',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontFamily: 'Pretendard',
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Container(
+                width: screenWidth * 0.9,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                decoration: ShapeDecoration(
+                  color: const Color(0xFFF2F2F7),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text(
+                      '비밀번호를 입력해주세요',
+                      style: TextStyle(
+                        color: Color(0xFF8E8E93),
+                        fontSize: 16,
+                        fontFamily: 'Pretendard',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    Container(
+                      width: 24,
+                      height: 24,
+                      decoration: const BoxDecoration(
+                        color: Color(0xFFD9D9D9),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                '비밀번호 확인',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontFamily: 'Pretendard',
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Container(
+                width: screenWidth * 0.9,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                decoration: ShapeDecoration(
+                  color: const Color(0xFFF2F2F7),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text(
+                      '비밀번호를 다시 입력해주세요',
+                      style: TextStyle(
+                        color: Color(0xFF8E8E93),
+                        fontSize: 16,
+                        fontFamily: 'Pretendard',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    Container(
+                      width: 24,
+                      height: 24,
+                      decoration: const BoxDecoration(
+                        color: Color(0xFFD9D9D9),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 24,
+                    height: 24,
+                    child: FlutterLogo(),
+                  ),
+                  SizedBox(width: 10),
+                  Text(
+                    '비밀번호 일치',
+                    style: TextStyle(
+                      color: Color(0xFF33C284),
+                      fontSize: 12,
+                      fontFamily: 'Pretendard',
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        '비밀번호를 입력해주세요',
-                        style: TextStyle(
-                          color: Color(0xFF8E8E93),
-                          fontSize: 16,
-                          fontFamily: 'Pretendard',
-                          fontWeight: FontWeight.w400,
-                          height: 0.07,
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Container(
-                        width: 44,
-                        height: 44,
-                        padding: const EdgeInsets.all(10),
-                        clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 24,
-                              height: 24,
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    width: 24,
-                                    height: 24,
-                                    decoration: BoxDecoration(color: Color(0xFFD9D9D9)),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                ],
               ),
-              Positioned(
-                left: 20,
-                top: 285,
-                child: Container(
-                  width: 352,
-                  height: 52,
-                  padding: const EdgeInsets.only(
-                    top: 16,
-                    left: 20,
-                    right: 8,
-                    bottom: 16,
-                  ),
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFF2F2F7),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+              const SizedBox(height: 40),
+              Center(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CheckAccount(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: screenWidth * 0.9,
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFF33C284),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(56),
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        '이메일을 입력해주세요',
-                        style: TextStyle(
-                          color: Color(0xFF8E8E93),
-                          fontSize: 16,
-                          fontFamily: 'Pretendard',
-                          fontWeight: FontWeight.w400,
-                          height: 0.07,
-                        ),
+                    child: const Text(
+                      '회원가입하기',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontFamily: 'Pretendard',
+                        fontWeight: FontWeight.w700,
                       ),
-                      const SizedBox(width: 10),
-                      Container(
-                        width: 44,
-                        height: 44,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(),
-                        child: FlutterLogo(),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 32,
-                top: 361,
-                child: Text(
-                  '비밀번호',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontFamily: 'Pretendard',
-                    fontWeight: FontWeight.w700,
-                    height: 0.07,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 20,
-                top: 499,
-                child: Container(
-                  width: 352,
-                  height: 52,
-                  padding: const EdgeInsets.only(
-                    top: 16,
-                    left: 20,
-                    right: 8,
-                    bottom: 16,
-                  ),
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFF2F2F7),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
                     ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        '비밀번호를 입력해주세요',
-                        style: TextStyle(
-                          color: Color(0xFF8E8E93),
-                          fontSize: 16,
-                          fontFamily: 'Pretendard',
-                          fontWeight: FontWeight.w400,
-                          height: 0.07,
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Container(
-                        width: 44,
-                        height: 44,
-                        padding: const EdgeInsets.all(10),
-                        clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 24,
-                              height: 24,
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    width: 24,
-                                    height: 24,
-                                    decoration: BoxDecoration(color: Color(0xFFD9D9D9)),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 32,
-                top: 468,
-                child: Text(
-                  '비밀번호 확인',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontFamily: 'Pretendard',
-                    fontWeight: FontWeight.w700,
-                    height: 0.07,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 32,
-                top: 254,
-                child: Text(
-                  '아이디',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontFamily: 'Pretendard',
-                    fontWeight: FontWeight.w700,
-                    height: 0.07,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 20,
-                top: 740,
-                child: Container(
-                  width: 352,
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                  decoration: ShapeDecoration(
-                    color: Color(0xFF33C284),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(56),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        '회원가입하기',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontFamily: 'Pretendard',
-                          fontWeight: FontWeight.w600,
-                          height: 0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 32,
-                top: 127,
-                child: Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(
-                        text: '회원님만의\n',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 24,
-                          fontFamily: 'Pretendard',
-                          fontWeight: FontWeight.w700,
-                          height: 0.06,
-                        ),
-                      ),
-                      TextSpan(
-                        text: '계정',
-                        style: TextStyle(
-                          color: Color(0xFF33C284),
-                          fontSize: 24,
-                          fontFamily: 'Pretendard',
-                          fontWeight: FontWeight.w700,
-                          height: 0.06,
-                        ),
-                      ),
-                      TextSpan(
-                        text: '을 만들어주세요.',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 24,
-                          fontFamily: 'Pretendard',
-                          fontWeight: FontWeight.w700,
-                          height: 0.06,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 28,
-                top: 555,
-                child: Container(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: 24,
-                        height: 24,
-                        child: FlutterLogo(),
-                      ),
-                      Text(
-                        '비밀번호 일치',
-                        style: TextStyle(
-                          color: Color(0xFF33C284),
-                          fontSize: 12,
-                          fontFamily: 'Pretendard',
-                          fontWeight: FontWeight.w500,
-                          height: 0.13,
-                        ),
-                      ),
-                    ],
                   ),
                 ),
               ),
             ],
           ),
         ),
-      ],
+      ),
     );
   }
 }

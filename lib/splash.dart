@@ -18,17 +18,23 @@ class _SplashScreenState extends State<SplashScreen> {
   _navigateToLogin() async {
     await Future.delayed(const Duration(seconds: 3), () {});
     Navigator.pushReplacement(
-      context, MaterialPageRoute(builder: (context) => LoginScreen()));
+      // ignore: use_build_context_synchronously
+      context, MaterialPageRoute(builder: (context) => const LoginScreen()));
   }
 
+  @override
   Widget build(BuildContext context) {
+    // 화면의 크기를 가져옴
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: 
         Container(
-          width: 390,
-          height: 844,
+          width: screenWidth,
+          height: screenHeight,
           clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(color: Color(0xFF33C284)),
+          decoration: const BoxDecoration(color: Color(0xFF33C284)),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -38,8 +44,8 @@ class _SplashScreenState extends State<SplashScreen> {
                 width: 100,
                 height: 100,
                 clipBehavior: Clip.antiAlias,
-                decoration: BoxDecoration(),
-                child: Column(
+                decoration: const BoxDecoration(),
+                child: const Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   ],
                 ),
               ),
-              Text(
+              const Text(
                 'Haven',
                 style: TextStyle(
                   color: Colors.white,
