@@ -1,15 +1,24 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:haven/edit_profile.dart';
 
 class MyPage extends StatefulWidget {
-  const MyPage({Key? key});
+  const MyPage({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _MyPageState();
 }
 
 class _MyPageState extends State<MyPage> {
+  File? _image; // 수정된 이미지를 저장할 변수
+
+  void _updateProfileImage(File image) {
+    setState(() {
+      _image = image;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +45,19 @@ class _MyPageState extends State<MyPage> {
           children: [
             const SizedBox(height: 10),
             GestureDetector(
-              onTap: () {
-                Navigator.push(
+              onTap: () async {
+                final result = await Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (c) => const EditProfile()),
+                  MaterialPageRoute(
+                    builder: (c) => EditProfile(
+                      onImageSelected: _updateProfileImage,
+                    ),
+                  ),
                 );
+
+                if (result != null && result is File) {
+                  _updateProfileImage(result);
+                }
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -87,6 +104,15 @@ class _MyPageState extends State<MyPage> {
                   borderRadius: BorderRadius.circular(72),
                 ),
               ),
+              child: _image != null
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(72),
+                      child: Image.file(
+                        _image!,
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  : null,
             ),
             const SizedBox(height: 20),
             const Text(
@@ -118,8 +144,8 @@ class _MyPageState extends State<MyPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.95, // 화면 크기에 맞게 조정
-                  height: 1.0, // 높이를 적절히 수정
+                  width: MediaQuery.of(context).size.width * 0.95,
+                  height: 1.0,
                   color: const Color.fromARGB(255, 202, 202, 204),
                   child: Align(
                     alignment: Alignment.centerLeft,
@@ -133,7 +159,7 @@ class _MyPageState extends State<MyPage> {
             ),
             const SizedBox(height: 30),
             Container(
-              width: MediaQuery.of(context).size.width * 0.95, // 화면 크기에 맞게 조정
+              width: MediaQuery.of(context).size.width * 0.95,
               height: 67,
               clipBehavior: Clip.antiAlias,
               decoration: const BoxDecoration(),
