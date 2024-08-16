@@ -14,6 +14,7 @@ class CameraScreen extends StatefulWidget {
 class _CameraScreenState extends State<CameraScreen> {
   CameraController? _controller;
   late Future<void> _initializeController;
+  CameraDescription? frontCamera;
 
   @override
   void initState() {
@@ -27,11 +28,21 @@ class _CameraScreenState extends State<CameraScreen> {
       if (cameras.isEmpty) {
         throw Exception('No cameras available');
       }
+      // 전면 카메라 찾아서 연결
+      for (var camera in cameras) {
+        if (camera.lensDirection == CameraLensDirection.front) {
+          frontCamera = camera;
+          break;
+        }
+      }
 
-      _controller = CameraController(
-        cameras.first,
-        ResolutionPreset.high,
-      );
+      if (frontCamera != null) {
+        _controller = CameraController(
+          frontCamera!,
+          ResolutionPreset.high,
+        );
+      }
+
       await _controller!.initialize();
     } catch (e) {
       debugPrint('Camera initialization error: $e');
