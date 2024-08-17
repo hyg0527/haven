@@ -18,6 +18,7 @@ class _CameraScreenState extends State<CameraScreen> {
   late Future<void> _initializeController;
   CameraDescription? frontCamera;
   XFile? _capturedImage;
+  bool _isImageCaptured = false;
 
   @override
   void initState() {
@@ -64,9 +65,24 @@ class _CameraScreenState extends State<CameraScreen> {
 
       setState(() {
         _capturedImage = image;
+        _isImageCaptured = true;
       });
+      // 이미지 서버에 업로드(미정)
+      await _uploadImage(image);
     } catch (e) {
       debugPrint('Cannot take picture: $e');
+    }
+  }
+
+  Future<void> _uploadImage(XFile image) async {
+    try {
+      // if (response.statusCode == 200) {
+      //   print('Image uploaded successfully');
+      // } else {
+      //   print('Failed to upload image');
+      // }
+    } catch (e) {
+      // print('Error uploading image: $e');
     }
   }
 
@@ -138,47 +154,49 @@ class _CameraScreenState extends State<CameraScreen> {
               width: double.infinity,
               padding: const EdgeInsets.only(top: 32, bottom: 32),
               decoration: const BoxDecoration(color: Colors.white),
-              child: Center(
-                child: ClickButton(
-                  isCircle: true,
-                  child: GestureDetector(
-                    onTap: _takePicture,
-                    child: ClipOval(
-                      child: Container(
-                        width: 100,
-                        height: 100,
-                        padding: const EdgeInsets.all(10),
-                        decoration: ShapeDecoration(
-                          color: const Color(0xFF33C284),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          shadows: const [
-                            BoxShadow(
-                              color: Color(0x3F000000),
-                              blurRadius: 10,
-                              offset: Offset(0, 0),
-                              spreadRadius: 0,
-                            )
-                          ],
-                        ),
-                        child: const Center(
-                          child: Text(
-                            '인식하기',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontFamily: 'Pretendard',
-                              fontWeight: FontWeight.w600,
-                              height: 1,
+              child: !_isImageCaptured
+                  ? Center(
+                      child: ClickButton(
+                        isCircle: true,
+                        child: GestureDetector(
+                          onTap: _takePicture,
+                          child: ClipOval(
+                            child: Container(
+                              width: 100,
+                              height: 100,
+                              padding: const EdgeInsets.all(10),
+                              decoration: ShapeDecoration(
+                                color: const Color(0xFF33C284),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                                shadows: const [
+                                  BoxShadow(
+                                    color: Color(0x3F000000),
+                                    blurRadius: 10,
+                                    offset: Offset(0, 0),
+                                    spreadRadius: 0,
+                                  )
+                                ],
+                              ),
+                              child: const Center(
+                                child: Text(
+                                  '인식하기',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontFamily: 'Pretendard',
+                                    fontWeight: FontWeight.w600,
+                                    height: 1,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ),
-                ),
-              ),
+                    )
+                  : const Center(),
             ),
           ],
         ),
