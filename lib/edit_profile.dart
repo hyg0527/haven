@@ -14,6 +14,7 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   File? _image;
+  final TextEditingController _nicknameController = TextEditingController();
 
   Future<void> _pickImage() async {
     final ImagePicker picker = ImagePicker();
@@ -24,18 +25,22 @@ class _EditProfileState extends State<EditProfile> {
         _image = File(image.path);
       });
 
-      widget.onImageSelected(_image!); // 선택된 이미지를 콜백으로 전달
+      widget.onImageSelected(_image!);
     }
+  }
+
+  @override
+  void dispose() {
+    _nicknameController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        clipBehavior: Clip.antiAlias,
-        decoration: const BoxDecoration(color: Colors.white),
+        color: Colors.white, // 배경색을 흰색으로 설정
         child: Column(
           children: [
             const SizedBox(height: 58),
@@ -73,25 +78,33 @@ class _EditProfileState extends State<EditProfile> {
             ),
             const SizedBox(height: 70),
             Container(
-              width: 179,
-              height: 179,
-              clipBehavior: Clip.antiAlias,
-              decoration: ShapeDecoration(
-                color: const Color(0xFFE5E5EA),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(72),
+                width: 179,
+                height: 179,
+                clipBehavior: Clip.antiAlias,
+                decoration: ShapeDecoration(
+                  color: const Color(0xFFE5E5EA),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(72),
+                  ),
                 ),
+                child: _image != null
+                    ? ClipRRect(
+                        borderRadius: BorderRadius.circular(72),
+                        child: Image.file(
+                          _image!,
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    : Text(
+                          '',
+                          style: TextStyle(
+                            color: Colors.grey[600],
+                            fontSize: 16,
+                            fontFamily: 'Pretendard',
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
               ),
-              child: _image != null
-                  ? ClipRRect(
-                      borderRadius: BorderRadius.circular(72),
-                      child: Image.file(
-                        _image!,
-                        fit: BoxFit.cover,
-                      ),
-                    )
-                  : null,
-            ),
             const SizedBox(height: 20),
             GestureDetector(
               onTap: _pickImage,
@@ -124,24 +137,35 @@ class _EditProfileState extends State<EditProfile> {
               ),
             ),
             const SizedBox(height: 50),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween, 
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: Row(
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 40),
-                    child: Text(
-                      '닉네임',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontFamily: 'Pretendard',
-                        fontWeight: FontWeight.w600,
-                        height: 0,
+                  Expanded(
+                    child: TextField(
+                      controller: _nicknameController,
+                      decoration: const InputDecoration(
+                        hintText: '수정할 닉네임을 입력하세요',
+                        hintStyle: TextStyle(
+                          color: Color(0xFF8E8E93),
+                          fontSize: 16,
+                          fontFamily: 'Pretendard',
+                          fontWeight: FontWeight.w500,
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFE0E0E0)),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFF33C284)),
+                        ),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20),
+                  const SizedBox(width: 8),
+                  GestureDetector(
+                    onTap: () {
+                      _nicknameController.clear();
+                    },
                     child: Container(
                       width: 44,
                       height: 44,
@@ -162,10 +186,10 @@ class _EditProfileState extends State<EditProfile> {
                                   borderRadius: BorderRadius.circular(24),
                                 ),
                               ),
-                              child: Center(  // Center 위젯을 사용하여 SVG 크기 조절
+                              child: Center(
                                 child: SizedBox(
-                                  width: 10,  // SVG의 너비를 지정
-                                  height: 10,  // SVG의 높이를 지정
+                                  width: 10,
+                                  height: 10,
                                   child: SvgPicture.asset(
                                     'assets/images/close_button.svg',
                                   ),
@@ -179,42 +203,8 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ],
               ),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    height: 1.0,
-                    color: const Color.fromARGB(255, 224, 224, 224),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: SvgPicture.asset(
-                        'assets/images/divider.svg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 15),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(width: 40),
-                  Text(
-                    '사용할 수 있는 닉네임입니다.',
-                    style: TextStyle(
-                      color: Color(0xFF8E8E93),
-                      fontSize: 14,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w500,
-                      height: 0,
-                    ),
-                  ),
-                ],
-              ),
+            ),
+            const SizedBox(height: 15),
             const Spacer(),
             GestureDetector(
               onTap: () {
