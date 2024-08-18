@@ -81,7 +81,6 @@ class _EditProfileState extends State<EditProfile> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(72),
                   ),
-                ),
               ),
               child: _image != null
                   ? ClipRRect(
