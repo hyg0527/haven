@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io'; // 파일 처리를 위해 필요
+import 'dart:io';
 
 class EditProfile extends StatefulWidget {
-  final Function(File) onImageSelected; // 이미지 선택 시 호출할 콜백
+  final Function(File) onImageSelected;
 
   const EditProfile({Key? key, required this.onImageSelected}) : super(key: key);
 
@@ -13,7 +13,7 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-  File? _image; // 선택된 이미지를 저장할 변수
+  File? _image;
 
   Future<void> _pickImage() async {
     final ImagePicker picker = ImagePicker();
@@ -94,7 +94,7 @@ class _EditProfileState extends State<EditProfile> {
             ),
             const SizedBox(height: 30),
             GestureDetector(
-              onTap: _pickImage, // 이미지 선택 함수 호출
+              onTap: _pickImage,
               child: Container(
                 height: 44,
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -123,11 +123,11 @@ class _EditProfileState extends State<EditProfile> {
                 ),
               ),
             ),
-            // 여기에 나머지 UI 요소들 추가
+
             const Spacer(),
             GestureDetector(
               onTap: () {
-                Navigator.pop(context, _image); // 수정하기를 누르면 선택된 이미지를 반환
+                Navigator.pop(context, _image);
               },
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.8,
