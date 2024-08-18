@@ -19,6 +19,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    final absoluteWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(75),
@@ -101,146 +103,152 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         clipBehavior: Clip.antiAlias,
         decoration: const BoxDecoration(color: Colors.white),
         child: Column(
           children: [
             const SizedBox(height: 18),
-            ClickButton(
-              secondScreen: const CameraScreen(),
-              child: Container(
-                width: 350,
-                height: 229,
-                padding: const EdgeInsets.all(10),
-                decoration: ShapeDecoration(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+            Expanded(
+              flex: 4,
+              child: ClickButton(
+                secondScreen: const CameraScreen(),
+                child: Container(
+                  width: absoluteWidth,
+                  // height: 229,
+                  padding: const EdgeInsets.all(10),
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    shadows: const [
+                      BoxShadow(
+                        color: Color(0x19000000),
+                        blurRadius: 10,
+                        offset: Offset(0, 0),
+                        spreadRadius: 0,
+                      )
+                    ],
                   ),
-                  shadows: const [
-                    BoxShadow(
-                      color: Color(0x19000000),
-                      blurRadius: 10,
-                      offset: Offset(0, 0),
-                      spreadRadius: 0,
-                    )
-                  ],
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 100,
-                      height: 100,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: const BoxDecoration(),
-                      child: SvgPicture.asset(
-                        'assets/images/face.svg',
-                        fit: BoxFit.cover,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 100,
+                        height: 100,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: const BoxDecoration(),
+                        child: SvgPicture.asset(
+                          'assets/images/face.svg',
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      '얼굴 인식하기',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontFamily: 'Pretendard',
-                        fontWeight: FontWeight.w600,
-                        height: 0,
+                      const SizedBox(height: 10),
+                      const Text(
+                        '얼굴 인식하기',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontFamily: 'Pretendard',
+                          fontWeight: FontWeight.w600,
+                          height: 0,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      '카메라를 실행시켜 얼굴을 인식해주세요',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Color(0xFF8E8E93),
-                        fontSize: 16,
-                        fontFamily: 'Pretendard',
-                        fontWeight: FontWeight.w400,
-                        height: 0,
+                      const SizedBox(height: 10),
+                      const Text(
+                        '카메라를 실행시켜 얼굴을 인식해주세요',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Color(0xFF8E8E93),
+                          fontSize: 16,
+                          fontFamily: 'Pretendard',
+                          fontWeight: FontWeight.w400,
+                          height: 0,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
             const SizedBox(
               height: 20,
             ),
-            ClickButton(
-              secondScreen: const Logcat(),
-              child: Container(
-                width: 350,
-                height: 229,
-                padding: const EdgeInsets.all(10),
-                decoration: ShapeDecoration(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+            Expanded(
+              flex: 4,
+              child: ClickButton(
+                secondScreen: const Logcat(),
+                child: Container(
+                  width: absoluteWidth,
+                  // height: 229,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    shadows: const [
+                      BoxShadow(
+                        color: Color(0x19000000),
+                        blurRadius: 10,
+                        offset: Offset(0, 0),
+                        spreadRadius: 0,
+                      )
+                    ],
                   ),
-                  shadows: const [
-                    BoxShadow(
-                      color: Color(0x19000000),
-                      blurRadius: 10,
-                      offset: Offset(0, 0),
-                      spreadRadius: 0,
-                    )
-                  ],
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 100,
-                      height: 100,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: const BoxDecoration(),
-                      child: SvgPicture.asset(
-                        'assets/images/logcat.svg',
-                        fit: BoxFit.cover,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 100,
+                        height: 100,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: const BoxDecoration(),
+                        child: SvgPicture.asset(
+                          'assets/images/logcat.svg',
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      '입퇴실 기록보기',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontFamily: 'Pretendard',
-                        fontWeight: FontWeight.w600,
-                        height: 0,
+                      const SizedBox(height: 10),
+                      const Text(
+                        '입퇴실 기록보기',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontFamily: 'Pretendard',
+                          fontWeight: FontWeight.w600,
+                          height: 0,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      '입퇴실의 기록 결과를 한번에 볼 수 있어요',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Color(0xFF8E8E93),
-                        fontSize: 16,
-                        fontFamily: 'Pretendard',
-                        fontWeight: FontWeight.w400,
-                        height: 0,
+                      const SizedBox(height: 10),
+                      const Text(
+                        '입퇴실의 기록 결과를 한번에 볼 수 있어요',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Color(0xFF8E8E93),
+                          fontSize: 16,
+                          fontFamily: 'Pretendard',
+                          fontWeight: FontWeight.w400,
+                          height: 0,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
             const SizedBox(
-              height: 25,
+              height: 20,
             ),
             Row(
               children: [
                 Container(
                   alignment: Alignment.centerLeft,
-                  margin: const EdgeInsets.fromLTRB(24, 0, 0, 0),
+                  margin: const EdgeInsets.fromLTRB(12, 0, 0, 0),
                   child: const Text(
                     '자리 선택',
                     style: TextStyle(
@@ -277,119 +285,125 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
             const SizedBox(
-              height: 15,
+              height: 10,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ClickButton(
-                  isActivated: false,
-                  secondScreen: const SeatList(),
-                  child: Container(
-                    width: 164,
-                    height: 110,
-                    padding: const EdgeInsets.all(10),
-                    decoration: ShapeDecoration(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+            Expanded(
+              flex: 2,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ClickButton(
+                    isActivated: false,
+                    secondScreen: const SeatList(),
+                    child: Container(
+                      width: 164,
+                      height: 110,
+                      padding: const EdgeInsets.all(10),
+                      decoration: ShapeDecoration(
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        shadows: const [
+                          BoxShadow(
+                            color: Color(0x19000000),
+                            blurRadius: 10,
+                            offset: Offset(0, 0),
+                            spreadRadius: 0,
+                          )
+                        ],
                       ),
-                      shadows: const [
-                        BoxShadow(
-                          color: Color(0x19000000),
-                          blurRadius: 10,
-                          offset: Offset(0, 0),
-                          spreadRadius: 0,
-                        )
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 80,
-                          height: 40,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: const BoxDecoration(),
-                          child: SvgPicture.asset(
-                            'assets/images/ai_logo.svg',
-                            fit: BoxFit.cover,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 80,
+                            height: 40,
+                            clipBehavior: Clip.antiAlias,
+                            decoration: const BoxDecoration(),
+                            child: SvgPicture.asset(
+                              'assets/images/ai_logo.svg',
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          'AI 추천 자리',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontFamily: 'Pretendard',
-                            fontWeight: FontWeight.w600,
-                            height: 0,
+                          const SizedBox(height: 10),
+                          const Text(
+                            'AI 추천 자리',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontFamily: 'Pretendard',
+                              fontWeight: FontWeight.w600,
+                              height: 0,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  width: 22,
-                ),
-                ClickButton(
-                  secondScreen: const SeatList(),
-                  child: Container(
-                    width: 164,
-                    height: 110,
-                    padding: const EdgeInsets.all(10),
-                    decoration: ShapeDecoration(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+                  const SizedBox(
+                    width: 22,
+                  ),
+                  ClickButton(
+                    secondScreen: const SeatList(),
+                    child: Container(
+                      width: 164,
+                      height: 110,
+                      padding: const EdgeInsets.all(10),
+                      decoration: ShapeDecoration(
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        shadows: const [
+                          BoxShadow(
+                            color: Color(0x19000000),
+                            blurRadius: 10,
+                            offset: Offset(0, 0),
+                            spreadRadius: 0,
+                          )
+                        ],
                       ),
-                      shadows: const [
-                        BoxShadow(
-                          color: Color(0x19000000),
-                          blurRadius: 10,
-                          offset: Offset(0, 0),
-                          spreadRadius: 0,
-                        )
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 80,
-                          height: 40,
-                          padding: const EdgeInsets.only(
-                              top: 4, left: 25, right: 25, bottom: 3),
-                          clipBehavior: Clip.antiAlias,
-                          decoration: const BoxDecoration(),
-                          child: SvgPicture.asset(
-                            'assets/images/select.svg',
-                            fit: BoxFit.cover,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 80,
+                            height: 40,
+                            padding: const EdgeInsets.only(
+                                top: 4, left: 25, right: 25, bottom: 3),
+                            clipBehavior: Clip.antiAlias,
+                            decoration: const BoxDecoration(),
+                            child: SvgPicture.asset(
+                              'assets/images/select.svg',
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          '일반 자리 선택',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontFamily: 'Pretendard',
-                            fontWeight: FontWeight.w600,
-                            height: 0,
+                          const SizedBox(height: 10),
+                          const Text(
+                            '일반 자리 선택',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontFamily: 'Pretendard',
+                              fontWeight: FontWeight.w600,
+                              height: 0,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 30,
             ),
           ],
         ),
