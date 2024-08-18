@@ -39,43 +39,38 @@ class _EditProfileState extends State<EditProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      body: Container(
-        color: Colors.white, // 배경색을 흰색으로 설정
+      backgroundColor: Colors.white, // 전체 배경을 흰색으로 설정
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: SvgPicture.asset(
+            'assets/images/close_button.svg',
+            width: 20,
+            height: 20,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title: const Text(
+          '프로필 수정',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 24,
+            fontFamily: 'Pretendard',
+            fontWeight: FontWeight.w700,
+            height: 0,
+          ),
+        ),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
         child: Column(
           children: [
-            const SizedBox(height: 58),
-            GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const SizedBox(width: 20),
-                  Container(
-                    width: 20,
-                    height: 20,
-                    clipBehavior: Clip.antiAlias,
-                    decoration: const BoxDecoration(),
-                    child: SvgPicture.asset(
-                      'assets/images/close_button.svg',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  const SizedBox(width: 25),
-                  const Text(
-                    '프로필 수정',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 24,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
-                  ),
-                ],
-              ),
-            ),
             const SizedBox(height: 70),
             Container(
                 width: 179,
@@ -87,24 +82,25 @@ class _EditProfileState extends State<EditProfile> {
                     borderRadius: BorderRadius.circular(72),
                   ),
                 ),
-                child: _image != null
-                    ? ClipRRect(
-                        borderRadius: BorderRadius.circular(72),
-                        child: Image.file(
-                          _image!,
-                          fit: BoxFit.cover,
-                        ),
-                      )
-                    : Text(
-                          '',
-                          style: TextStyle(
-                            color: Colors.grey[600],
-                            fontSize: 16,
-                            fontFamily: 'Pretendard',
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
               ),
+              child: _image != null
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(72),
+                      child: Image.file(
+                        _image!,
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  : Text(
+                      '',
+                      style: TextStyle(
+                        color: Colors.grey[600],
+                        fontSize: 16,
+                        fontFamily: 'Pretendard',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+            ),
             const SizedBox(height: 20),
             GestureDetector(
               onTap: _pickImage,
@@ -205,41 +201,47 @@ class _EditProfileState extends State<EditProfile> {
               ),
             ),
             const SizedBox(height: 15),
-            const Spacer(),
-            GestureDetector(
-              onTap: () {
-                Navigator.pop(context, _image);
-              },
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.8,
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                decoration: ShapeDecoration(
-                  color: const Color(0xFF33C284),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                ),
-                child: const Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      '수정하기',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontFamily: 'Pretendard',
-                        fontWeight: FontWeight.w600,
-                        height: 0,
-                      ),
-                    ),
-                  ],
-                ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom+30,
+          left: 20,
+          right: 20,
+          top: 10,
+        ),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.pop(context, _image);
+          },
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.8,
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            decoration: ShapeDecoration(
+              color: const Color(0xFF33C284),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50),
               ),
             ),
-            const SizedBox(height: 40),
-          ],
+            child: const Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  '수정하기',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontFamily: 'Pretendard',
+                    fontWeight: FontWeight.w600,
+                    height: 0,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
