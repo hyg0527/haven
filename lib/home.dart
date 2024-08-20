@@ -329,7 +329,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                            const SizedBox(height: 10),
+                            const SizedBox(height: 4),
                             const Text(
                               'AI 추천 자리',
                               style: TextStyle(
@@ -385,7 +385,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                            const SizedBox(height: 10),
+                            const SizedBox(height: 4),
                             const Text(
                               '일반 자리 선택',
                               style: TextStyle(
