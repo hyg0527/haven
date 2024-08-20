@@ -12,11 +12,13 @@ class MyPage extends StatefulWidget {
 }
 
 class _MyPageState extends State<MyPage> {
-  File? _image; // 수정된 이미지를 저장할 변수
+  File? _image;
+  String _nickname = '닉네임';
 
-  void _updateProfileImage(File image) {
+  void _updateProfile(File image, String nickname) {
     setState(() {
       _image = image;
+      _nickname = nickname;
     });
   }
 
@@ -50,14 +52,13 @@ class _MyPageState extends State<MyPage> {
                   context,
                   MaterialPageRoute(
                     builder: (c) => EditProfile(
-                      onImageSelected: _updateProfileImage,
+                      onProfileUpdated: _updateProfile,
                     ),
                   ),
                 );
-
-                if (result != null && result is File) {
-                  _updateProfileImage(result);
-                }
+                // if (result != null && result is File) {
+                //   _updateProfileImage(result);
+                // }
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -115,10 +116,10 @@ class _MyPageState extends State<MyPage> {
                   : null,
             ),
             const SizedBox(height: 20),
-            const Text(
-              '닉네임',
+            Text(
+              _nickname,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
                 fontSize: 24,
                 fontFamily: 'Pretendard',

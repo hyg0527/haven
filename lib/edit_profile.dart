@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'dart:io';
 
 class EditProfile extends StatefulWidget {
-  final Function(File) onImageSelected;
+  final Function(File, String) onProfileUpdated;
 
-  const EditProfile({Key? key, required this.onImageSelected}) : super(key: key);
+  const EditProfile({Key? key, required this.onProfileUpdated}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _EditProfileState();
@@ -24,9 +25,18 @@ class _EditProfileState extends State<EditProfile> {
       setState(() {
         _image = File(image.path);
       });
-
-      widget.onImageSelected(_image!);
     }
+  }
+
+    void _showToast(String message) {
+    Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_SHORT,
+      timeInSecForIosWeb: 3,
+      backgroundColor: Colors.grey,
+      fontSize: 15,
+      gravity: ToastGravity.BOTTOM,
+    );
   }
 
   @override
@@ -212,7 +222,12 @@ class _EditProfileState extends State<EditProfile> {
         ),
         child: GestureDetector(
           onTap: () {
-            Navigator.pop(context, _image);
+            if (_nicknameController.text.isEmpty) {
+              _showToast('닉네임을 작성해 주세요');
+            } else {
+              widget.onProfileUpdated(_image!, _nicknameController.text);
+            Navigator.pop(context);
+            }
           },
           child: Container(
             width: MediaQuery.of(context).size.width * 0.8,
