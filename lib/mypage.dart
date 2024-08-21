@@ -15,9 +15,11 @@ class _MyPageState extends State<MyPage> {
   File? _image;
   String _nickname = '닉네임';
 
-  void _updateProfile(File image, String nickname) {
+  void _updateProfile(File? image, String nickname) {
     setState(() {
-      _image = image;
+      if (image != null) {
+        _image = image;
+      }
       _nickname = nickname;
     });
   }
@@ -56,9 +58,6 @@ class _MyPageState extends State<MyPage> {
                     ),
                   ),
                 );
-                // if (result != null && result is File) {
-                //   _updateProfileImage(result);
-                // }
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -129,7 +128,7 @@ class _MyPageState extends State<MyPage> {
             ),
             const SizedBox(height: 15),
             const Text(
-              'qwertyuiopasdfg@kookmin.ac.kr',
+              'qwerty123@nickname.ac.kr',
               style: TextStyle(
                 color: Color(0xFF8E8E93),
                 fontSize: 14,

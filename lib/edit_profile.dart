@@ -5,7 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'dart:io';
 
 class EditProfile extends StatefulWidget {
-  final Function(File, String) onProfileUpdated;
+  final Function(File?, String) onProfileUpdated;
 
   const EditProfile({Key? key, required this.onProfileUpdated}) : super(key: key);
 
@@ -225,7 +225,7 @@ class _EditProfileState extends State<EditProfile> {
             if (_nicknameController.text.isEmpty) {
               _showToast('닉네임을 작성해 주세요');
             } else {
-              widget.onProfileUpdated(_image!, _nicknameController.text);
+              widget.onProfileUpdated(_image, _nicknameController.text);
             Navigator.pop(context);
             }
           },
