@@ -26,6 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
         preferredSize: const Size.fromHeight(75),
         child: AppBar(
           backgroundColor: Colors.white,
+          automaticallyImplyLeading: false,
           elevation: 0,
           flexibleSpace: Stack(
             children: [

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:haven/home.dart';
+import 'package:haven/splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MyHomePage(),
+      home: const SplashScreen(),
     );
   }
 }
