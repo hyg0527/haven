@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:haven/check_account.dart';
 import 'package:haven/clickbutton.dart';
+import 'package:haven/textfield_gray.dart';
 
 class CreateAccountScreen extends StatefulWidget {
   const CreateAccountScreen({super.key});
@@ -76,26 +77,10 @@ class _CreateAccountScreen extends State<CreateAccountScreen> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Container(
-                  width: screenWidth * 0.9,
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFFF2F2F7),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  child: const Text(
-                    '이메일을 입력해주세요',
-                    style: TextStyle(
-                      color: Color(0xFF8E8E93),
-                      fontSize: 16,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
+                GrayTextField(
+                    hintText: '이메일을 입력해주세요',
+                    width: screenWidth * 0.9,
+                    isPassword: false),
                 const SizedBox(height: 20),
                 const Text(
                   '비밀번호',
@@ -107,41 +92,10 @@ class _CreateAccountScreen extends State<CreateAccountScreen> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Container(
-                  width: screenWidth * 0.9,
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFFF2F2F7),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Text(
-                        '비밀번호를 입력해주세요',
-                        style: TextStyle(
-                          color: Color(0xFF8E8E93),
-                          fontSize: 16,
-                          fontFamily: 'Pretendard',
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: SvgPicture.asset(
-                          'assets/images/eye_off.svg',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                GrayTextField(
+                    hintText: '비밀번호를 입력해주세요',
+                    width: screenWidth * 0.9,
+                    isPassword: true),
                 const SizedBox(height: 20),
                 const Text(
                   '비밀번호 확인',
@@ -153,41 +107,10 @@ class _CreateAccountScreen extends State<CreateAccountScreen> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Container(
-                  width: screenWidth * 0.9,
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFFF2F2F7),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Text(
-                        '비밀번호를 다시 입력해주세요',
-                        style: TextStyle(
-                          color: Color(0xFF8E8E93),
-                          fontSize: 16,
-                          fontFamily: 'Pretendard',
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: SvgPicture.asset(
-                          'assets/images/eye_off.svg',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                GrayTextField(
+                    hintText: '비밀번호를 다시 입력해주세요',
+                    width: screenWidth * 0.9,
+                    isPassword: true),
                 const SizedBox(height: 8),
                 SizedBox(
                   width: 100,
